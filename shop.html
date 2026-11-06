@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jasika Enterprises | Cement &amp; Steel</title>
+
+    <style>
+        :root {
+            color-scheme: light;
+            --navy: #17365d;
+            --deep-navy: #102844;
+            --gold: #f0ad3d;
+            --ink: #263445;
+            --muted: #687789;
+            --surface: #ffffff;
+            --page: #f3f6f9;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: var(--page);
+            color: var(--ink);
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .site-header {
+            align-items: center;
+            background: var(--deep-navy);
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            padding: 18px max(6%, calc((100% - 1120px) / 2));
+        }
+
+        .brand {
+            font-size: 26px;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+        }
+
+        .header-note {
+            color: #d7e1eb;
+            font-size: 14px;
+            margin: 0;
+        }
+
+        .hero {
+            align-items: center;
+            background: #243d57;
+            display: flex;
+            min-height: 340px;
+            overflow: hidden;
+            padding: 56px max(6%, calc((100% - 1120px) / 2));
+            position: relative;
+        }
+
+        .hero-image {
+            height: 100%;
+            inset: 0;
+            object-fit: cover;
+            object-position: center 54%;
+            position: absolute;
+            width: 100%;
+        }
+
+        .hero::after {
+            background: linear-gradient(90deg, rgba(12, 31, 51, .88), rgba(12, 31, 51, .28));
+            content: "";
+            inset: 0;
+            position: absolute;
+        }
+
+        .hero-copy {
+            color: white;
+            max-width: 600px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .eyebrow {
+            color: #ffd17d;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin: 0 0 12px;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            font-size: clamp(36px, 6vw, 58px);
+            line-height: 1.05;
+            margin: 0 0 14px;
+        }
+
+        .hero-copy > p:last-child {
+            color: #e7edf3;
+            font-size: 18px;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        main {
+            margin: 0 auto;
+            max-width: 1120px;
+            padding: 46px 24px 58px;
+        }
+
+        .intro {
+            margin: 0 auto 30px;
+            max-width: 650px;
+            text-align: center;
+        }
+
+        .intro h2 {
+            color: var(--navy);
+            font-size: 30px;
+            margin: 0 0 10px;
+        }
+
+        .intro p {
+            color: var(--muted);
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .feature-links {
+            display: grid;
+            gap: 16px;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            margin: 24px auto 34px;
+            max-width: 760px;
+        }
+
+        .feature-link {
+            align-items: center;
+            background: white;
+            border: 1px solid #e3e9ef;
+            border-radius: 10px;
+            color: var(--navy);
+            display: flex;
+            justify-content: space-between;
+            padding: 17px 20px;
+            text-decoration: none;
+            transition: border-color .2s ease, box-shadow .2s ease, transform .2s ease;
+        }
+
+        .feature-link:hover {
+            border-color: #b6c8dc;
+            box-shadow: 0 8px 20px rgba(27, 48, 71, .1);
+            transform: translateY(-3px);
+        }
+
+        .feature-link span:last-child {
+            color: #a7680c;
+            font-weight: 700;
+        }
+
+        .price-grid {
+            display: grid;
+            gap: 24px;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .price-card {
+            background: var(--surface);
+            border: 1px solid #e3e9ef;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(27, 48, 71, .06);
+            overflow: hidden;
+        }
+
+        .card-heading {
+            align-items: center;
+            border-bottom: 1px solid #e9eef3;
+            display: flex;
+            gap: 13px;
+            padding: 20px 22px;
+        }
+
+        .card-icon {
+            align-items: center;
+            background: #fff3dc;
+            border-radius: 10px;
+            color: #9c610a;
+            display: flex;
+            flex: 0 0 44px;
+            font-size: 21px;
+            height: 44px;
+            justify-content: center;
+        }
+
+        .card-heading h2 {
+            color: var(--navy);
+            font-size: 20px;
+            margin: 0;
+        }
+
+        .card-heading p {
+            color: var(--muted);
+            font-size: 13px;
+            margin: 5px 0 0;
+        }
+
+        table {
+            border-collapse: collapse;
+            text-align: left;
+            width: 100%;
+        }
+
+        th, td {
+            padding: 15px 20px;
+        }
+
+        th {
+            background: #f7f9fb;
+            color: #657487;
+            font-size: 11px;
+            letter-spacing: .8px;
+            text-transform: uppercase;
+        }
+
+        td {
+            border-top: 1px solid #edf1f4;
+            font-size: 14px;
+        }
+
+        tbody tr:hover {
+            background: #fbfcfe;
+        }
+
+        td:first-child {
+            color: #7b8896;
+            width: 70px;
+        }
+
+        td:last-child {
+            color: var(--navy);
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        .quantity-cell,
+        .subtotal-cell {
+            text-align: right;
+        }
+
+        .quantity-input {
+            border: 1px solid #cbd5df;
+            border-radius: 6px;
+            color: var(--ink);
+            font: inherit;
+            padding: 8px;
+            text-align: center;
+            width: 76px;
+        }
+
+        .quantity-input:focus {
+            border-color: var(--navy);
+            outline: 2px solid rgba(23, 54, 93, .18);
+        }
+
+        .order-summary {
+            align-items: center;
+            background: var(--deep-navy);
+            border-radius: 12px;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            margin-top: 24px;
+            padding: 20px 24px;
+        }
+
+        .order-summary p {
+            color: #d7e1eb;
+            margin: 0;
+        }
+
+        .order-total {
+            font-size: 22px;
+            font-weight: 700;
+            margin: 5px 0 0;
+        }
+
+        .order-actions {
+            align-items: flex-end;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .book-order-button,
+        .whatsapp-link {
+            background: #20a464;
+            border: 0;
+            border-radius: 7px;
+            color: white;
+            cursor: pointer;
+            display: inline-block;
+            font: inherit;
+            font-weight: 700;
+            padding: 12px 18px;
+            text-decoration: none;
+        }
+
+        .book-order-button:hover,
+        .whatsapp-link:hover {
+            background: #16834f;
+        }
+
+        .book-order-button:focus-visible,
+        .whatsapp-link:focus-visible {
+            outline: 3px solid #a9e8c8;
+            outline-offset: 3px;
+        }
+
+        .book-order-button:disabled {
+            background: #718096;
+            cursor: not-allowed;
+        }
+
+        .address {
+            color: #d7e1eb;
+            font-size: 14px;
+            font-style: normal;
+            line-height: 1.6;
+            text-align: right;
+        }
+
+        .site-footer {
+            background: var(--deep-navy);
+            color: #e6edf4;
+            padding: 24px;
+            text-align: center;
+        }
+
+        .site-footer p {
+            font-size: 14px;
+            margin: 5px 0;
+        }
+
+        .site-footer p:last-child {
+            color: #afc0d0;
+        }
+
+        @media (max-width: 700px) {
+            .site-header {
+                align-items: flex-start;
+                flex-direction: column;
+                gap: 7px;
+                padding: 16px 22px;
+            }
+
+            .hero {
+                min-height: 300px;
+                padding: 42px 24px;
+            }
+
+            .hero::after {
+                background: rgba(12, 31, 51, .68);
+            }
+
+            main {
+                padding: 36px 16px 44px;
+            }
+
+            .price-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .feature-links {
+                grid-template-columns: 1fr;
+            }
+
+            .order-summary {
+                align-items: stretch;
+                flex-direction: column;
+                gap: 16px;
+            }
+
+            .order-actions {
+                align-items: flex-start;
+            }
+        }
+
+        @media (max-width: 380px) {
+            th, td {
+                padding: 13px 8px;
+            }
+
+            .quantity-input {
+                padding: 7px 3px;
+                width: 58px;
+            }
+
+            .order-summary {
+                padding: 18px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="brand">JASIKA ENTERPRISES</div>
+        <div>
+            <p class="header-note">Your trusted cement and steel supplier</p>
+            <address class="address">Ram Krishna Nagar, Jyotish Path, Patna 27</address>
+        </div>
+    </header>
+
+    <section class="hero" aria-label="Construction materials">
+        <img
+            class="hero-image"
+            src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&amp;fit=crop&amp;w=2000&amp;q=85"
+            alt="Construction crew working on a building site"
+        >
+        <div class="hero-copy">
+            <p class="eyebrow">Building stronger, together</p>
+            <h1>Quality materials.<br>Solid foundations.</h1>
+            <p>Find the latest prices on trusted cement and TMT steel brands.</p>
+        </div>
+    </section>
+
+    <main>
+        <div class="intro">
+            <h2>Our Price List</h2>
+            <p>Reliable materials for every project, from foundation to finish.</p>
+        </div>
+
+        <nav class="feature-links" aria-label="Explore our materials">
+            <a class="feature-link" href="ambuja-cement.html">
+                <span>See our cement animation</span><span aria-hidden="true">→</span>
+            </a>
+            <a class="feature-link" href="tmt-bars.html">
+                <span>See our TMT bars animation</span><span aria-hidden="true">→</span>
+            </a>
+        </nav>
+
+        <div class="price-grid">
+            <section class="price-card" aria-labelledby="cement-heading">
+                <div class="card-heading">
+                    <div class="card-icon" aria-hidden="true">▰</div>
+                    <div>
+                        <h2 id="cement-heading">Cement</h2>
+                        <p>Price per bag</p>
+                    </div>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th scope="col">No.</th>
+                            <th scope="col">Brand</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">Subtotal</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr data-price="240">
+                            <td>1</td><td>Ambuja Cement</td><td>₹240</td>
+                            <td class="quantity-cell"><input class="quantity-input" type="number" min="0" step="1" value="0" aria-label="Quantity of Ambuja Cement"></td>
+                            <td class="subtotal-cell">₹0</td>
+                        </tr>
+                        <tr data-price="219">
+                            <td>2</td><td>UltraTech Cement</td><td>₹219</td>
+                            <td class="quantity-cell"><input class="quantity-input" type="number" min="0" step="1" value="0" aria-label="Quantity of UltraTech Cement"></td>
+                            <td class="subtotal-cell">₹0</td>
+                        </tr>
+                        <tr data-price="290">
+                            <td>3</td><td>Nuvoco Cement</td><td>₹290</td>
+                            <td class="quantity-cell"><input class="quantity-input" type="number" min="0" step="1" value="0" aria-label="Quantity of Nuvoco Cement"></td>
+                            <td class="subtotal-cell">₹0</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section class="price-card" aria-labelledby="steel-heading">
+                <div class="card-heading">
+                    <div class="card-icon" aria-hidden="true">▤</div>
+                    <div>
+                        <h2 id="steel-heading">TMT Steel</h2>
+                        <p>Price per ton</p>
+                    </div>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th scope="col">No.</th>
+                            <th scope="col">Brand</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">Subtotal</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr data-price="350">
+                            <td>1</td><td>Jindal Panther TMT</td><td>₹350</td>
+                            <td class="quantity-cell"><input class="quantity-input" type="number" min="0" step="1" value="0" aria-label="Quantity of Jindal Panther TMT"></td>
+                            <td class="subtotal-cell">₹0</td>
+                        </tr>
+                        <tr data-price="559">
+                            <td>2</td><td>Elegant TMT</td><td>₹559</td>
+                            <td class="quantity-cell"><input class="quantity-input" type="number" min="0" step="1" value="0" aria-label="Quantity of Elegant TMT"></td>
+                            <td class="subtotal-cell">₹0</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </div>
+
+        <section class="order-summary" aria-live="polite" aria-label="Order total">
+            <div>
+                <p id="item-count">0 items selected</p>
+                <p class="order-total">Estimated total: <span id="order-total">₹0</span></p>
+            </div>
+            <div class="order-actions">
+                <p id="order-hint">Update quantities above to calculate your order.</p>
+                <button class="book-order-button" id="book-order" type="button" disabled>
+                    Book Order on WhatsApp
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <address class="address">Ram Krishna Nagar, Jyotish Path, Patna 27</address>
+        <p>Contact us: <a href="tel:8877543699">8877543699</a></p>
+        <p>WhatsApp: <a class="whatsapp-link" href="https://wa.me/918877543699" target="_blank" rel="noopener noreferrer">Chat with us</a></p>
+        <p>© 2026 Jasika Enterprises. All Rights Reserved.</p>
+        <p>Thank you for visiting us!</p>
+        <p>Website provided by Ajay Kumar</p>
+    </footer>
+    <script>
+        const currency = new Intl.NumberFormat("en-IN", {
+            style: "currency",
+            currency: "INR",
+            maximumFractionDigits: 0
+        });
+        const quantityInputs = document.querySelectorAll(".quantity-input");
+        const bookOrderButton = document.getElementById("book-order");
+        const orderHint = document.getElementById("order-hint");
+
+        function updateOrderTotal() {
+            let total = 0;
+            let itemCount = 0;
+
+            quantityInputs.forEach((input) => {
+                const row = input.closest("tr");
+                const quantity = Math.max(0, Math.floor(Number(input.value) || 0));
+                const subtotal = quantity * Number(row.dataset.price);
+
+                if (input.value !== "" && Number(input.value) !== quantity) {
+                    input.value = quantity;
+                }
+
+                row.querySelector(".subtotal-cell").textContent = currency.format(subtotal);
+                total += subtotal;
+                itemCount += quantity;
+            });
+
+            document.getElementById("order-total").textContent = currency.format(total);
+            document.getElementById("item-count").textContent =
+                `${itemCount} ${itemCount === 1 ? "item" : "items"} selected`;
+            bookOrderButton.disabled = itemCount === 0;
+            orderHint.textContent = itemCount === 0
+                ? "Update quantities above to calculate your order."
+                : "Confirm your order details with us on WhatsApp.";
+        }
+
+        quantityInputs.forEach((input) => {
+            input.addEventListener("input", updateOrderTotal);
+        });
+
+        bookOrderButton.addEventListener("click", () => {
+            const orderLines = [];
+            let total = 0;
+
+            quantityInputs.forEach((input) => {
+                const quantity = Math.floor(Number(input.value) || 0);
+                if (quantity === 0) {
+                    return;
+                }
+
+                const row = input.closest("tr");
+                const brand = row.cells[1].textContent.trim();
+                const unitPrice = Number(row.dataset.price);
+                const subtotal = quantity * unitPrice;
+                orderLines.push(`${brand}: ${quantity} x ${currency.format(unitPrice)} = ${currency.format(subtotal)}`);
+                total += subtotal;
+            });
+
+            if (orderLines.length === 0) {
+                return;
+            }
+
+            const message = [
+                "Hello Jasika Enterprises, I would like to book this order:",
+                "",
+                ...orderLines,
+                "",
+                `Estimated total: ${currency.format(total)}`,
+                "",
+                "Please confirm availability and delivery details."
+            ].join("\n");
+            const whatsappUrl = `https://wa.me/918877543699?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+        });
+    </script>
+</body>
+</html>
